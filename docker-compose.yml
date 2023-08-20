@@ -7,9 +7,10 @@ services:
     volumes:
       - ./public_html:/var/www/html
     environment:
-      - VIRTUAL_HOST=[your url]
-      - LETSENCRYPT_HOST=[your url]
+      - VIRTUAL_HOST=current.aws.cisassessment.com.br
+      - LETSENCRYPT_HOST=current.aws.cisassessment.com.br
       - VIRTUAL_PROTO=fastcgi
+      - LETSENCRYPT_EMAIL=leandro@cisassessment.com.br
 
 networks:
   default:
