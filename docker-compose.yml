@@ -17,7 +17,7 @@ services:
       - LETSENCRYPT_HOST=current.aws.cisassessment.com.br
       - VIRTUAL_PROTO=fastcgi
       - LETSENCRYPT_EMAIL=leandro@cisassessment.com.br
-# networks:
-#   default:
-#     external: true
-#     name: proxy
+networks:
+  default:
+    external: true
+    name: proxy
