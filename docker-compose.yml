@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  php-fpm:
+    image: php:fpm-alpine3.13
+    container_name: php-fpm
+    volumes:
+      - ./public_html:/var/www/html
+    environment:
+      - VIRTUAL_HOST=[your url]
+      - LETSENCRYPT_HOST=[your url]
+      - VIRTUAL_PROTO=fastcgi
+
+networks:
+  default:
+    external:
+      name: proxy
