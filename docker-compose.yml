@@ -2,17 +2,22 @@ version: "3.9"
 
 services:
   php-fpm:
-    image: php:fpm-alpine3.13
+    # image: php:fpm-alpine3.13
+    build:
+      context: ./docker/homologacao
+      dockerfile: Dockerfile
     container_name: php-fpm
     volumes:
       - ./public_html:/var/www/html
+      # - .:/var/www/html
+      - ./docker/homologacao/php-ini-overrides.ini:/usr/local/etc/php/conf.d/99-overrides.ini
     environment:
+      - APPLICATION_ENV=development
       - VIRTUAL_HOST=current.aws.cisassessment.com.br
       - LETSENCRYPT_HOST=current.aws.cisassessment.com.br
       - VIRTUAL_PROTO=fastcgi
       - LETSENCRYPT_EMAIL=leandro@cisassessment.com.br
-
-networks:
-  default:
-    external: true
-    name: proxy
+# networks:
+#   default:
+#     external: true
+#     name: proxy
